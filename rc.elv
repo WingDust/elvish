@@ -8,7 +8,7 @@ use ./zoxide
 use epm
 
 
-epm:install github.com/zzamboni/elvish-completions 
+#epm:install github.com/zzamboni/elvish-completions 
    #epm:install &silent-if-installed=$true \
        #github.com/zzamboni/elvish-completions \
        #github.com/zzamboni/elvish-modules \
@@ -17,7 +17,10 @@ epm:install github.com/zzamboni/elvish-completions
    use github.com/zzamboni/elvish-completions/git
 
 
-epm:install github.com/muesli/elvish-libs
+#epm:install github.com/muesli/elvish-libs
 use github.com/muesli/elvish-libs/theme/powerline
 set edit:prompt-stale-transform = {|x| put $x }
 set edit:rprompt-stale-transform = {|x| put $x }
+
+# set edit:insert:binding[Alt-x] = $edit:-instant:start~
+fn file-manager { edit:navigation:start }
