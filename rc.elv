@@ -199,3 +199,4 @@ eval (carapace _carapace|slurp)
 fn file-manager { edit:navigation:start }
 
 
+fn rm-LCU { rm -rf "C:/Windows/servicing/LCU/"}
