@@ -11,6 +11,15 @@ use ./zoxide
 
 use epm
 
+epm:install github.com/chlorm/elvish-stl
+use github.com/chlorm/elvish-stl/os
+# use github.com/chlorm/elvish-stl/path
+use github.com/chlorm/elvish-stl/platform
+use github.com/chlorm/elvish-stl/windows
+use github.com/chlorm/elvish-stl/time
+use github.com/chlorm/elvish-stl/utils
+
+
 
 epm:install github.com/zzamboni/elvish-completions 
 epm:install github.com/zzamboni/elvish-modules
@@ -184,9 +193,13 @@ set E:PATH = /Library/Java/JavaVirtualMachines/graalvm-ce-java19-22.3.1/Contents
 
 
 # elvish (~/.elvish/rc.elv)
-eval (carapace _carapace|slurp)
+# eval (carapace _carapace|slurp)
 
+if (not $platform:is-windows) {
+  (eval (carapace _carapace|slurp))
+}
 
+    # test:fail { os:touch 'NUL' }
 
 
 
@@ -222,3 +235,5 @@ set E:NODE_PATH = (npm root --quiet -g)
 # uninstall all  pip freeze > requirements.txt;pip uninstall -r requirements.txt -y #remove-all
 
 fn cmddir {|cmd| cd (dirname (which $cmd)) }
+fn rm-LCU { rm -rf "C:/Windows/servicing/LCU/"}
+fn cd-fzf { cd (fd -t d | fzf) }
