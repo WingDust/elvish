@@ -34,6 +34,13 @@ set edit:rprompt-stale-transform = {|x| put $x }
 epm:install &silent-if-installed=$true github.com/crinklywrappr/rivendell
 epm:upgrade github.com/crinklywrappr/rivendell
 
+
+# epm:install github.com/trieloff/elvish-completion
+# use github.com/trieloff/elvish-completion/npx
+# use github.com/trieloff/elvish-completion/npm
+
+
+
 # use github.com/crinklywrappr/rivendell/test t
 # # use github.com/crinklywrappr/rivendell/base b
 # use github.com/crinklywrappr/rivendell/fun f
@@ -199,3 +206,19 @@ eval (carapace _carapace|slurp)
 fn file-manager { edit:navigation:start }
 
 
+#                                     ╭─────╮
+#                                     │ env │
+#                                     ╰─────╯
+
+# https://github.com/stylelint/vscode-stylelint/issues/384#issuecomment-1332931914
+set E:NODE_PATH = (npm root --quiet -g)
+
+
+#                                 ╭────────────╮
+#                                 │ completion │
+#                                 ╰────────────╯
+
+# https://zzamboni.org/post/using-and-writing-completions-in-elvish/
+# uninstall all  pip freeze > requirements.txt;pip uninstall -r requirements.txt -y #remove-all
+
+fn cmddir {|cmd| cd (dirname (which $cmd)) }
